@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <script type="text/javascript"
+    src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="SB-Mid-client-tuHFsrsxohwXDvQ4">
+  </script>
+</head>
+<body>
+  <button id="pay-button">Pay!</button>
+  <script type="text/javascript">
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function () {
+      snap.pay('c1fb275c-a731-489f-9228-9ead1ff62c70', {
+        onSuccess: function(result){console.log('success');console.log(result);},
+        onPending: function(result){console.log('pending');console.log(result);},
+        onError: function(result){console.log('error');console.log(result);},
+        onClose: function(){console.log('customer closed the popup without finishing the payment');}
+      });
+    });
+  </script>
+</body>
+</html>
